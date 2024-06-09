@@ -1,5 +1,5 @@
 # ProyectoVCMC
-Descripción del proyecto Este repositorio contiene el código para la creación de un modelo de visión computacional que puede detectar el hongo Mycosphaerella Citri en las hojas de mandarina. El modelo está entrenado con un conjunto de imágenes de hojas de mandarina sanas y enfermas.
+Este repositorio contiene el código para la creación de un modelo de visión computacional que puede detectar el hongo Mycosphaerella Citri en las hojas de mandarina. El modelo está entrenado con un conjunto de imágenes de hojas de mandarina sanas y enfermas.
 
 #Autores: Aguirre Ramos Hector & Zamata Cangalaya Xiang
 
