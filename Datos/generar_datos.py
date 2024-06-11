@@ -6,9 +6,11 @@ import numpy as np
 from tqdm import tqdm
 import random as rn
 import pickle 
+import matplotlib.pyplot as plt
 DATADIR=r"Clasificacion_Hojas"
 CATEGORIAS=["ENFERMA","SANA"]
-tamaño_img=2040
+tamaño_img=1080
+
 def generar_datos():
     data=[]
     for categoria in CATEGORIAS:
@@ -59,8 +61,9 @@ def generar_datos():
                 data.append([gradiente,valor])
 
                 # Mostrar la imagen con el filtro de Sobel
-                #plt.imshow(gradiente, cmap='gray')
-                #plt.show()
+                plt.imshow(gradiente, cmap='gray')
+                plt.show()
+
     rn.shuffle(data)
     x=[]
     y=[]
@@ -69,7 +72,7 @@ def generar_datos():
         par=data[i]
         x.append(par[0]) 
         y.append(par[1])
-    x=np.array(x).reshape(-1,2040,2040,1)
+    x=np.array(x).reshape(-1,tamaño_img,tamaño_img,1)
 
     pickle_out=open("x.pickle","wb")
     pickle.dump(x,pickle_out)
@@ -78,5 +81,6 @@ def generar_datos():
     pickle_out=open("y.pickle","wb")
     pickle.dump(y,pickle_out)
     pickle_out.close()
+    
     
 generar_datos()
