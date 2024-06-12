@@ -1,15 +1,17 @@
 import cv2
 import os
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from PIL import Image, ImageEnhance
 import numpy as np
 from tqdm import tqdm
 import random as rn
 import pickle 
+import matplotlib.pyplot as plt
 DATADIR=r"Clasificacion_Hojas"
 CATEGORIAS=["ENFERMA","SANA"]
-tamaño_img=2040
-def Generar_datos():
+tamaño_img=720
+
+def generar_datos():
     data=[]
     for categoria in CATEGORIAS:
         carpeta= os.path.join(DATADIR,categoria)
@@ -61,6 +63,7 @@ def Generar_datos():
                 # Mostrar la imagen con el filtro de Sobel
                 #plt.imshow(gradiente, cmap='gray')
                 #plt.show()
+
     rn.shuffle(data)
     x=[]
     y=[]
@@ -69,7 +72,7 @@ def Generar_datos():
         par=data[i]
         x.append(par[0]) 
         y.append(par[1])
-    x=np.array(x).reshape(-1,2040,2040,1)
+    x=np.array(x).reshape(-1,tamaño_img,tamaño_img,1)
 
     pickle_out=open("x.pickle","wb")
     pickle.dump(x,pickle_out)
@@ -78,4 +81,6 @@ def Generar_datos():
     pickle_out=open("y.pickle","wb")
     pickle.dump(y,pickle_out)
     pickle_out.close()
-Generar_datos()
+    
+    
+generar_datos()
