@@ -32,27 +32,28 @@ def generar_datos():
                 ruta = os.path.join(carpeta, nombre_imagen)
                 imagen = Image.open(ruta)
 
-                # Ajusta el brillo
+                # Ajusta de parametros de la imagen
                 ajuste_brillo = ImageEnhance.Brightness(imagen)
                 imagen = ajuste_brillo.enhance(brillo)
-                # Ajusta el contraste
+                
                 ajuste_contraste = ImageEnhance.Contrast(imagen)
                 imagen = ajuste_contraste.enhance(contraste)
-                # Ajusta las altas luces
+
                 ajuste_altasluces = ImageEnhance.Brightness(imagen)
                 imagen = ajuste_altasluces.enhance(altas_luces)
-                # Ajusta las sombras
+
                 ajuste_sombra = ImageEnhance.Brightness(imagen)
                 imagen = ajuste_sombra.enhance(sombras)
-                # Ajusta la nitidez
+
                 ajuste_nitidez = ImageEnhance.Sharpness(imagen)
                 imagen = ajuste_nitidez.enhance(nitidez)
-
-                # Convertir la imagen a formato OpenCV y bn
+                
+                # Convertir la imagen a formato OpenCV a escala de grises
                 imagen_cv = cv2.cvtColor(np.array(imagen), cv2.COLOR_BGR2GRAY)
+        
                 #homogenizar tamaño de imagenes
                 imagen_cv=cv2.resize(imagen_cv,(tamaño_img,tamaño_img))
-
+                
                 # Aplicar filtro de Sobel
                 bordes_verticales = cv2.Sobel(imagen_cv, cv2.CV_8U, 1, 0, ksize=3)
                 bordes_horizontales = cv2.Sobel(imagen_cv, cv2.CV_8U, 0, 1, ksize=3)
@@ -61,9 +62,9 @@ def generar_datos():
                 data.append([gradiente,valor])
 
                 # Mostrar la imagen con el filtro de Sobel
-                #plt.imshow(gradiente, cmap='gray')
-                #plt.show()
-
+                plt.imshow(gradiente, cmap='gray')
+                plt.show()
+"""
     rn.shuffle(data)
     x=[]
     y=[]
@@ -81,6 +82,6 @@ def generar_datos():
     pickle_out=open("y.pickle","wb")
     pickle.dump(y,pickle_out)
     pickle_out.close()
-    
+"""    
     
 generar_datos()

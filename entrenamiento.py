@@ -39,7 +39,7 @@ modelo.add(MaxPooling2D((2, 2)))
 modelo.add(Flatten())
 modelo.add(Dense(2, activation='softmax'))
 
-# Compilar la red neuronal
+# Compilar la red neuronal 
 modelo.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Configurar los callbacks
