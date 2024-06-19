@@ -29,7 +29,7 @@ from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
 # Iterar sobre el número de neuronas
-for num_neurons in [16, 32, 64, 128]:
+for num_neurons in [16, 32, 64]:
     # Crear la red neuronal
     modelo = Sequential()
     modelo.add(Conv2D(num_neurons, (3, 3), activation='relu', input_shape=(tamaño_img, tamaño_img, 1)))
@@ -49,4 +49,4 @@ for num_neurons in [16, 32, 64, 128]:
     model_checkpoint = ModelCheckpoint('modelos/cnn_model_neu{}.keras'.format(num_neurons), monitor='val_loss', save_best_only=True, mode='min')
 
     # Entrenar la red neuronal
-    modelo.fit(x_train, y_train, epochs=1, batch_size=32, validation_data=(x_test, y_test), callbacks=[early_stopping, model_checkpoint])
+    modelo.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test), callbacks=[early_stopping, model_checkpoint])
