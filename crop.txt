@@ -1,0 +1,11 @@
+ ancho = gradiente.shape[1]
+                alto = gradiente.shape[0]
+                
+                # Calcular las coordenadas del cropping
+                cropping_width = 400
+                cropping_height = 400
+                x = int((ancho - cropping_width) / 2)
+                y = int((alto - cropping_height) / 2)
+
+                # Aplicar el cropping
+                cropped_img = gradiente[y:y+cropping_height, x:x+cropping_width]
